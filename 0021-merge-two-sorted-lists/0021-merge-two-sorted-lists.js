@@ -41,7 +41,7 @@ var mergeTwoLists = function(list1, list2) {
 };
 
 
-// time complexity: O(min(m, n)) - where m and n are the lengths of the two input LLs, because we're only going to traverse as "far" as the lenght of the shorter lists
+// time complexity: O(min(m, n)) - where m and n are the lengths of the two input LLs, because we're only going to traverse as "far" as the length of the shorter lists
 // space complexity: O(m + n)
 
 
