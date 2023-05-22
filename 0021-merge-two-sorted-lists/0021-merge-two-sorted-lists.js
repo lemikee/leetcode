@@ -10,43 +10,46 @@
  * @param {ListNode} list2
  * @return {ListNode}
  */
-
-class Node {
-    constructor(next, val) {
-        this.next = null;
-        this.val = null;
-    }
-}
-
 var mergeTwoLists = function(list1, list2) {
-    const dummyHead = new Node(null);
-    let current1 = list1;
-    let current2 = list2;
-    let tail = dummyHead;
+    const dummyHead = new ListNode(null);
+    tail = dummyHead;
+    current_one = list1;
+    current_two = list2;
     
-    while (current1 && current2) {
-        if (current1.val < current2.val) {
-            tail.next = current1;
-            current1 = current1.next;
+    while (current_one && current_two) {
+        if (current_one.val < current_two.val) {
+            tail.next = current_one;
+            current_one = current_one.next;
         } else {
-            tail.next = current2;
-            current2 = current2.next;
+            tail.next = current_two;
+            current_two = current_two.next;
         }
         
         tail = tail.next;
     }
     
-    tail.next = current1 || current2;
+
+    tail.next = current_one || current_two;
+    
     return dummyHead.next;
 };
 
 
-// time complexity: O(min(m, n)) - where m and n are the lengths of the two input LLs, because we're only going to traverse as "far" as the length of the shorter lists
-// space complexity: O(m + n)
+// time complexity: O(min(m, n)), where m and n are the lengths of the two input lists
+// space complexity: O(1)
 
 
-// idea: use dummyHead pattern and create a new linked list which we will return
-//  to travser through both list1 and list2, using ptrs for each LL, we will attach the lesser value to the tail of the dummyHead LL
-//  but were not guranteed that both input LL will be of the same length, so we'll need to add the rest of the longer LL to our dummyHead LL, if it exists
-//  once we're done with our traversal and take care diff LL lengths, then we'll return dummyHead.next, which should be the head out our merged/sorted LL
+// idea: create a dummyHead for our merged/sorted linked list
+// traverse through each of our input LL and compare the values for each node we are focused on in the respecitve lists
+// and then we're going to append the node of lesser value to the tail of our new merged/sorted LL
+// append the end of the longer linked list, if it exists, to the tail of our new LL
+// return the head of our new LL
+
+
+
+
+
+
+
+
 
